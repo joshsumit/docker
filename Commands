@@ -15,8 +15,16 @@ Inside nano Server: run updates
  Invoke-CimMethod -InputObject $sess  -MethodName ApplyApplicableUpdates
  
 To Customize docker engine at startup
- dockerd
- 
+ #config file on windows is found at %programdata%\docker\config\deamon.json  
+ #dockerd --config-file for non default location
+ #open a firewall at nano server 
+ netsh advfirewall firewall add rule name="docker deamon" dir=in action=allow protocol=TCP localport=2375
+ create a new deamon.json and add listening port in it #new-item   #add-content
+
+Connnect Remotely  to docker 
+
+
+
 Remove all containers
  docker rm $(docker ps -a  -q)
  docker rm $(docker ps -a -f status=exited -q)
