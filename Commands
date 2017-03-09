@@ -22,9 +22,27 @@ To Customize docker engine at startup
  create a new deamon.json and add listening port in it #new-item   #add-content
 
 Connnect Remotely  to docker 
+ 
+ docekr -H tcp://192.168.your.ip:2375
+ 
+ 
+Pull images from docker hub
+  docker pull microsoft/nanoserver:tag
+See all the images
+  docker images
+Run the image interactively and start command prompt
+  docker run -it --name Server01 microsoft/nanoserver cmd
+To detach from container but let it remain runnig 
+  Control + PQ
+To get back into the running container 
+  Docker exec -it containerid cmd
+View all the settings for the container
+  docker inspect containerid
+ 
+Remove running container
+  docker rm -f containerid
 
-
-
+ 
 Remove all containers
  docker rm $(docker ps -a  -q)
  docker rm $(docker ps -a -f status=exited -q)
