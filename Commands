@@ -1,6 +1,22 @@
-install-windowsfeature containers
-install-module -name DockerMsftProvider
+sconfig
+Install Docker
+ install-windowsfeature containers #optional
+ install-module -name DockerMsftProvider -Reposiroty PSGallery -Force
+ install-Package -name docker -ProviderName DockerMsftProvider
+ Get-Service Docker
+ Start-Service Docker
 
+To connect to nano server
+ set-item wsman:\localhost\client\trustedhosts\192.168.your.ip -Force
+ Enter-PsSession -ComputerName 192.168.your.ip -Credential (Get-Credential)
+ 
+Inside nano Server: run updates
+ $sess = New-CimInstance -Namespace root/micorsoft/windows/windowsupdate
+ Invoke-CimMethod -InputObject $sess  -MethodName ApplyApplicableUpdates
+ 
+To Customize docker engine at startup
+ dockerd
+ 
 Remove all containers
  docker rm $(docker ps -a  -q)
  docker rm $(docker ps -a -f status=exited -q)
