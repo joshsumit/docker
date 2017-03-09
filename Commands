@@ -49,3 +49,7 @@ Remove all containers
  
 Remove all Images
  docker rmi $(docker images -a  -q)
+ 
+Retag image
+ docker tag imagename:oldtag imagename:newtab
+ docer rmi imagename:oldtag
