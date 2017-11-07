@@ -53,3 +53,8 @@ Remove all Images
 Retag image
  docker tag imagename:oldtag imagename:newtab
  docer rmi imagename:oldtag
+ 
+ 
+ docker build -t mywebapi
+ docker run -t -p 8080:80 mywebapi 
+ http://localhost:8080/api/values/  
