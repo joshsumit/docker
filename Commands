@@ -1,3 +1,8 @@
+
+docker --version
+docker-compose --version
+docker-machine --version
+
 sconfig
 Install Docker
  install-windowsfeature containers #optional
